@@ -26,7 +26,7 @@ public class MouseTracking : MonoBehaviour {
         
         if (freeCnt >= 3 && !isFree)
         {
-            blackHolePE.forceMagnitude = 500;
+            blackHolePE.forceMagnitude = 1000;
         }
         
         /*
@@ -52,7 +52,7 @@ public class MouseTracking : MonoBehaviour {
             float distance = Vector2.Distance(blackHolePE.gameObject.transform.position, this.transform.position);
             Debug.Log(distance);
 
-            if (distance > 12.0f)
+            if (distance > 2.8f)
             {
                 isFree = true;
                 rb.isKinematic = true;
@@ -67,10 +67,14 @@ public class MouseTracking : MonoBehaviour {
     {
         if (isFree)
         {
-            Vector2 mousePosition = new Vector2(Input.mousePosition.x, Input.mousePosition.y);
-            Vector2 objPosition = Camera.main.ScreenToWorldPoint(mousePosition);
+            if ((Input.mousePosition.x < (Screen.width - 3)) && (Input.mousePosition.x > 3) && (Input.mousePosition.y < (Screen.height - 3)) && (Input.mousePosition.y > 3))
+            {             
+                Vector2 mousePosition = new Vector2(Input.mousePosition.x, Input.mousePosition.y);
+                Vector2 objPosition = Camera.main.ScreenToWorldPoint(mousePosition);
 
-            transform.position = objPosition;
+                transform.position = objPosition;
+            }
+
         }
 
     }
