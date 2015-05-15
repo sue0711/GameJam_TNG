@@ -52,7 +52,7 @@ public class MouseTracking : MonoBehaviour {
             float distance = Vector2.Distance(blackHolePE.gameObject.transform.position, this.transform.position);
             Debug.Log(distance);
 
-            if (distance > 2.8f)
+            if (distance > 3.5f)
             {
                 isFree = true;
                 rb.isKinematic = true;
