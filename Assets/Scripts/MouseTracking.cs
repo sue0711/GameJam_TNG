@@ -5,7 +5,7 @@ public class MouseTracking : MonoBehaviour {
 
     float Distance = 10;
 
-    bool isFree;
+    public bool isFree;
 
     int freeCnt;
 
@@ -17,7 +17,7 @@ public class MouseTracking : MonoBehaviour {
 	void Start () {
         isFree = true;
         freeCnt = 0;
-        blackHolePE = GameObject.Find("Hole").GetComponent<PointEffector2D>();
+        blackHolePE = GameObject.Find("Map1/Hole").GetComponent<PointEffector2D>();
         rb = this.GetComponent<Rigidbody2D>();
 	}
 	
@@ -46,6 +46,7 @@ public class MouseTracking : MonoBehaviour {
             if (Input.GetKeyDown(KeyCode.Space))
             {
                 freeCnt++;
+                Debug.Log("freeCnt = " + freeCnt);
                 //blackHolePE.forceMagnitude += 50;
             }
 
@@ -59,6 +60,7 @@ public class MouseTracking : MonoBehaviour {
                 rb.isKinematic = false;
                 blackHolePE.forceMagnitude = -50;
                 freeCnt = 0;
+                Debug.Log("freeCnt = " + freeCnt + "초기화됨");
             }
         }
 	}
@@ -85,5 +87,6 @@ public class MouseTracking : MonoBehaviour {
         {
             isFree = false;
         }
+
     }
 }
