@@ -19,13 +19,15 @@ public class Player_Collide : MonoBehaviour
     {
         life = 3;
 
-        planets[0] = GameObject.Find("Earth").GetComponent<Collider2D>();
+        planets = GameObject.Find("Earth").GetComponentsInChildren<Collider2D>();
 
-        for (int i = 1; i < planets.Length; i++)
-        {
-            string nTs = i.ToString();
-            planets[i] = GameObject.Find(nTs).GetComponent<Collider2D>(); 
-        }
+        score = 0;
+
+        //for (int i = 1; i < planets.Length; i++)
+        //{
+        //    string nTs = i.ToString();
+        //    planets[i] = GameObject.Find(nTs).GetComponent<Collider2D>(); 
+        //}
 
         scoreTxt = GameObject.Find("Canvas/Text/ScoreTxt").GetComponent<Text>();
     }
@@ -37,8 +39,6 @@ public class Player_Collide : MonoBehaviour
         {
             Time.timeScale = 0;
         }
-
-        scoreTxt.text = score.ToString();
     }
 
 
@@ -55,7 +55,8 @@ public class Player_Collide : MonoBehaviour
 
             Debug.Log(this.gameObject.name + "가 " + coll.gameObject.tag + "을 먹음 짝짝짝");
             score += 10;
-            
+            scoreTxt.text = score.ToString();
+
             GameObject effect;
             effect = Instantiate(countImg,coll.transform.position, coll.transform.rotation) as GameObject;
             coll.gameObject.SetActive(false);

@@ -13,7 +13,7 @@ public class MouseTracking : MonoBehaviour {
 
     Rigidbody2D rb;
 
-    GameObject[] planets;
+    //GameObject[] planets;
 
     bool isBeforeStart;
     // Use this for initialization
@@ -23,13 +23,20 @@ public class MouseTracking : MonoBehaviour {
         blackHolePE = GameObject.Find("Hole").GetComponent<PointEffector2D>();
         rb = this.GetComponent<Rigidbody2D>();
 
-        planets[0] = GameObject.Find("Earth");
+        Player_Collide earth = GameObject.FindGameObjectWithTag("Earth").GetComponent<Player_Collide>();
 
-        for (int i = 1; i < planets.Length; i++)
+        for (int i = 1; i < earth.planets.Length; i++)
         {
-            planets[i] = GameObject.Find(i.ToString());
-            planets[i].gameObject.SetActive(false);
+            earth.planets[i].gameObject.SetActive(false);
         }
+
+        ////planets[0] = GameObject.Find("Earth");
+
+        //for (int i = 1; i < planets.Length; i++)
+        //{
+        //    planets[i] = GameObject.Find(i.ToString());
+        //    planets[i].gameObject.SetActive(false);
+        //}
 	}
 	
 	// Update is called once per frame
