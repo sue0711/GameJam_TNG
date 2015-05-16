@@ -14,7 +14,9 @@ public class Player_Collide : MonoBehaviour
 
     Text scoreTxt;
 
-    // Use this for initialization
+    public Sprite[] lifeSprite = new Sprite[3];
+
+
     void Awake()
     {
         life = 3;
@@ -29,15 +31,16 @@ public class Player_Collide : MonoBehaviour
         //    planets[i] = GameObject.Find(nTs).GetComponent<Collider2D>(); 
         //}
 
-        scoreTxt = GameObject.Find("Canvas/Text/ScoreTxt").GetComponent<Text>();
+        scoreTxt = GameObject.Find("Canvas/ScoreText/ScoreTxt").GetComponent<Text>();
     }
 
-    // Update is called once per frame
+
     void Update()
     {
         if (life <= 0)
         {
-            Time.timeScale = 0;
+            GameObject.Find("Canvas/LifeGage/Life1").SetActive(false);
+            Time.timeScale = 0;           
         }
     }
 
@@ -48,6 +51,17 @@ public class Player_Collide : MonoBehaviour
         {
             Debug.Log(this.gameObject.name + "가 " + coll.gameObject.tag + "랑 충돌함");
             life--;
+            
+            if(life == 2)
+            {
+                GameObject.Find("Canvas/LifeGage/Life3").SetActive(false);
+            }
+            else if(life == 1)
+            {
+                GameObject.Find("Canvas/LifeGage/Life2").SetActive(false);
+            }
+            
+
             OffCol();
         }
         else if(coll.gameObject.tag == "Item")
