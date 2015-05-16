@@ -24,6 +24,10 @@ public class Player_Collide : MonoBehaviour
         {
             Debug.Log(this.gameObject.name + "가 " + coll.gameObject.tag + "랑 충돌함");
         }
+        else if(coll.gameObject.tag == "Item")
+        {
+            Debug.Log(this.gameObject.name + "가 " + coll.gameObject.tag + "을 먹음 짝짝짝");
+        }
     }
 
 }
