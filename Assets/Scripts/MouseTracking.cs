@@ -17,7 +17,7 @@ public class MouseTracking : MonoBehaviour {
 	void Start () {
         isFree = true;
         freeCnt = 0;
-        blackHolePE = GameObject.Find("Map1/Hole").GetComponent<PointEffector2D>();
+        blackHolePE = GameObject.Find("Hole").GetComponent<PointEffector2D>();
         rb = this.GetComponent<Rigidbody2D>();
 	}
 	
